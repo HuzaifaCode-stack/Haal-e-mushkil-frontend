@@ -11,6 +11,14 @@ const App = () => {
     navigate("/volunteer");
   };
 
+  const [userId] = useState(() => {
+    const existing = localStorage.getItem("anon-user-id");
+    if (existing) return existing;
+    const newId = crypto.randomUUID();
+    localStorage.setItem("anon-user-id", newId);
+    return newId;
+  });
+
   return (
     <div className="bg-light w-full">
       {/* Hero Section */}
@@ -133,7 +141,7 @@ const App = () => {
         }}
       >
         <div className="container ">
-          <h1 className="h3 fw-bold text-center display-6 fw-semibold py-5"> 
+          <h1 className="h3 fw-bold text-center display-6 fw-semibold py-5">
             What Members Are <br /> Part Of
           </h1>
           <div className="row g-4">
@@ -152,7 +160,7 @@ const App = () => {
 
             <div className="col-md-6 col-lg-3 ">
               <div className="card h-100 shadow-lg rounded- border-0 text-center p-2">
-                <img 
+                <img
                   className="rounded-3"
                   style={{ objectFit: "cover", height: "180px", width: "100%" }}
                   src="https://img.freepik.com/free-photo/cheerful-indian-businessman-smiling-closeup-portrait-jobs-career-campaign_53876-129417.jpg"
@@ -162,7 +170,7 @@ const App = () => {
                 <p>Your voice matters. Speak, and we amplify it.</p>
               </div>
             </div>
- 
+
             <div className="col-md-6 col-lg-3 ">
               <div className="card h-100 shadow-lg rounded- border-0 text-center p-2">
                 <img
@@ -170,7 +178,7 @@ const App = () => {
                   style={{ objectFit: "cover", height: "180px", width: "100%" }}
                   src="https://img.freepik.com/free-photo/cheerful-indian-businessman-smiling-closeup-portrait-jobs-career-campaign_53876-129417.jpg"
                   alt=""
-                /> 
+                />
                 <h5 className="mt-3">Youth Forum</h5>
                 <p>Empowering Kashmir’s youth with opportunities & dialogue.</p>
               </div>
